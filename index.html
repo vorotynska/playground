@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RANDOM QUOTE MACHINE</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./index.js" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center">
+                    <div id="quote-box" class="card-body border-secondary mb-3">
+                        <div id="quote-text" class="text-center ">
+                            <h5 class="card-title">
+                                <i class="fa fa-quote-left"> </i><span id="text">Always do what you are afraid to
+                                    do</span>
+                            </h5>
+                        </div>
+                        <div class="quote-author"> <span id="author"> Ralph Waldo Emerson</span></div>
+                        <div class="buttons d-flex justify-content-between">
+                            <a href="#" class="btn btn-primary" id="tweet-quote" title="Tweet this quote!"
+                                target="_top">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-primary" id="tumblr-quote" title="Post this quote on tumblr!"
+                                target="_blank">
+                                <i class="fas fa-thumbs-up"></i>Like
+                            </a>
+
+                            <button type="submit" class="btn btn-primary" id="new-quote">New quote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            let quotes = [{
+                quote: "A people free to choose will always choose peace.",
+                author: "Ronald Reagan"
+            },
+            {
+                quote: "It is difficult to free fools from the chains they revere.",
+                author: "Voltaire"
+            },
+            {
+                quote: "I saw the angel in the marble and carved until I set him free.",
+                author: "Michelangelo"
+            },
+            {
+                quote: "No one is free, even the birds are chained to the sky.",
+                author: "Bob Dylan"
+            },
+            {
+                quote: "We must free ourselves of the hope that the sea will ever rest. We must learn to sail in high winds.",
+                author: "Aristotle Onassis"
+            },
+            {
+                quote: "For to be free is not merely to cast off one's chains, but to live in a way that respects and enhances the freedom of others.",
+                author: "Nelson Mandela"
+            },
+            {
+                quote: "Only in our dreams are we free. The rest of the time we need wages.",
+                author: "Terry Pratchett"
+            },
+            {
+                quote: "Love is the greatest gift that God has given us. It's free.",
+                author: "Taraji P. Henson"
+            },
+            {
+                quote: "Linux is only free if your time has no value.",
+                author: "Jamie Zawinski"
+            },
+            {
+                quote: "Happiness can only be found if you can free yourself of all other distractions.",
+                author: "Saul Bellow"
+            },
+            ]
+
+            $(document).ready(function () {
+                $('#new-quote').bind('click', quotes, function (e) {
+                    const randomIndex = Math.floor(Math.random() * quotes.length);
+                    $('#text').text(e.data[randomIndex].quote);
+                    $('#author').text(e.data[randomIndex].author);
+                    $('#tweet-quote').on('click', function () {
+                        window.open(' https://twitter.com/intent/tweet?text=' + '\'' + (e.data[randomIndex].quote) + '\'' + ' - ' + (e.data[randomIndex].author))
+                    });
+                });
+
+
+            })
+
+        </script>
+
+    </div>
+
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+
+    <div>
+        <a href="#" class="btn btn-primary" id="tweet-quote" title="Tweet this quote!" target="_top">
+            <i class="fab fa-twitter"></i>
+        </a>
+    </div>
+
+</body>
+
+</html>
