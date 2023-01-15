@@ -24,11 +24,12 @@
                     <div id="quote-box" class="card-body border-secondary mb-3">
                         <div id="quote-text" class="text-center ">
                             <h5 class="card-title">
-                                <i class="fa fa-quote-left"> </i><span id="text">Always do what you are afraid to
-                                    do</span>
+                                <i class="fa fa-quote-left"> </i><span id="text"> A people free to choose will always
+                                    choose peace.
+                                </span>
                             </h5>
                         </div>
-                        <div class="quote-author"> <span id="author"> Ralph Waldo Emerson</span></div>
+                        <div class="quote-author"> <span id="author"> Ronald Reagan</span></div>
                         <div class="buttons d-flex justify-content-between">
                             <a href="#" class="btn btn-primary" id="tweet-quote" title="Tweet this quote!"
                                 target="_top">
@@ -89,14 +90,24 @@
             },
             ]
 
+            let currentQuote = quotes[0].quote;
+            let currentAuthor = quotes[0].author;
+
+            $('#tweet-quote').attr(
+    'href',
+    'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' +
+      encodeURIComponent('"' + currentQuote + '" ' + currentAuthor)
+  );
+
             $(document).ready(function () {
                 $('#new-quote').bind('click', quotes, function (e) {
                     const randomIndex = Math.floor(Math.random() * quotes.length);
-                    $('#text').text(e.data[randomIndex].quote);
-                    $('#author').text(e.data[randomIndex].author);
-                    $('#tweet-quote').on('click', function () {
-                        window.open(' https://twitter.com/intent/tweet?text=' + '\'' + (e.data[randomIndex].quote) + '\'' + ' - ' + (e.data[randomIndex].author))
-                    });
+                    currentQuote = e.data[randomIndex].quote;
+                    currentAuthor = e.data[randomIndex].author;
+
+                    $('#text').text(currentQuote);
+                    $('#author').text(currentAuthor);
+                   
                 });
 
 
@@ -110,11 +121,11 @@
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 
 
-    <div>
-        <a href="#" class="btn btn-primary" id="tweet-quote" title="Tweet this quote!" target="_top">
-            <i class="fab fa-twitter"></i>
-        </a>
-    </div>
+
+
+
+
+
 
 </body>
 
